@@ -1,3 +1,5 @@
+package hackerrank
+
 fun stones(n: Int, a: Int, b: Int): Array<Int> {
     val result: MutableList<Int> = ArrayList()
     val minAB = Math.min(a, b)

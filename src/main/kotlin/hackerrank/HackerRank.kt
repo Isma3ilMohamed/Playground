@@ -1,3 +1,5 @@
+package hackerrank
+
 //designerPdfViewer
 val map= hashMapOf<Char,Int>().apply {
     ('a'..'z').forEachIndexed { index, c ->
@@ -52,7 +54,7 @@ fun encryption(s: String): String {
         }
     }
 
-   val result=transposeMatrix(arr).map {
+   val result= transposeMatrix(arr).map {
        it.joinToString("").trim()
    }.joinToString(" ")
     return result
