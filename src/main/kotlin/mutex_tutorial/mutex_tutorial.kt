@@ -1,6 +1,5 @@
 package mutex_tutorial
 
-import jdk.tools.jlink.plugin.ResourcePool
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 
