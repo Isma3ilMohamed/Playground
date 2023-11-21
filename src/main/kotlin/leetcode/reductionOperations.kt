@@ -13,7 +13,5 @@ fun reductionOperations(nums: IntArray): Int {
     return ans
 }
 fun main() {
-
     println(reductionOperations(intArrayOf(5,1,3)))
-
 }
