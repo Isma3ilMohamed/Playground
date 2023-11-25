@@ -22,7 +22,7 @@
 *.zip
 *.tar.gz
 *.rar
-.gradle/*.*
+.gradle/*
 build/*
 !build/build.xml
 
