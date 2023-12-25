@@ -1,7 +1,7 @@
 package leetcode
 
 fun minOperations(boxes: String): IntArray {
-    val result= IntArray(size = boxes.length)
+/*    val result= IntArray(size = boxes.length)
     val n=boxes.length
     var count=0
     var total=0
@@ -25,7 +25,20 @@ fun minOperations(boxes: String): IntArray {
         }
     }
 
-    return result
+    return result*/
+    val result= mutableListOf<Int>()
+    for (i in boxes.indices){
+        var count=0
+        for (j in boxes.indices){
+            if (boxes[j]=='1'){
+                count+= Math.abs(i-j)
+            }
+        }
+        result.add(count)
+    }
+
+    return result.toIntArray()
+
 }
 
 fun main() {
