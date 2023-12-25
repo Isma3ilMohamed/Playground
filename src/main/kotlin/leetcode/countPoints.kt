@@ -5,8 +5,8 @@ fun countPoints(points: Array<IntArray>, queries: Array<IntArray>): IntArray {
     for (i in queries.indices){
         var count=0
         for (j in points.indices){
-            val distance=Math.sqrt(Math.pow((points[j][0]-queries[i][0]).toDouble(), 2.0)+Math.pow((points[j][1]-queries[i][1]).toDouble(), 2.0))
-            if (distance <= queries[i][2]){
+            val distance=Math.pow((points[j][0]-queries[i][0]).toDouble(), 2.0)+Math.pow((points[j][1]-queries[i][1]).toDouble(), 2.0)
+            if (distance <= queries[i][2]*queries[i][2]){
                 count+=1
             }
         }
