@@ -1,9 +1,7 @@
 package leetcode
 
- class TreeNode(var `val`: Int) {
-    var left: TreeNode? = null
-    var right: TreeNode? = null
-}
+import leetcode.helper.TreeNode
+
 
 val result=StringBuilder()
 
