@@ -1,23 +1,21 @@
 class Solution:
     def kInversePairs(self, n: int, k: int) -> int:
         MOD = 10 ** 9 + 7
-        cache = {}
+        prev = [0] * (k + 1)
+        prev[0] = 1
 
-        def count(n, k):
-            if n == 0:
-                return 1 if k == 0 else 0
-            if k < 0:
-                return 0
-            if (n, k) in cache:
-                return cache[(n, k)]
+        for N in range(1, n + 1):
+            curr = [0] * (k + 1)
+            total = 0  # sliding window
+            for k in range(0, k + 1):
+                if k >= N:
+                    total -= prev[k - N]
+                total = (total + prev[k]) % MOD
+                curr[k] = total
 
-            cache[(n, k)] = 0
-            for i in range(n):
-                cache[(n, k)] = ((cache[(n, k)] + count(n - 1, k - i)) % MOD)
-            return cache[(n,k)]
-        return count(n,k)
-
+            prev = curr
+        return prev[k]
 
 
-solve=Solution()
-print(solve.kInversePairs(3,0))
+solve = Solution()
+print(solve.kInversePairs(3, 0))
