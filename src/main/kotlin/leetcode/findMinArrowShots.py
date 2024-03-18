@@ -1,16 +1,18 @@
 class Solution:
-    def findMinArrowShots(self, points: List[List[int]]) -> int:
-        points.sort(key=lambda x: (x[0],x[1]))
-        n = len(points)
-        x,y = points[0]
-        count=n
+    def findMinArrowShots(self, points: list[list[int]]) -> int:
+        points=sorted(points,key=lambda x:x[1])
+        arrow=1
+        end=points[0][1]
+        for point in points:
+            if point[0] > end:
+                end=point[1]
+                arrow +=1
 
-        for i in range(1,n):
-            if x <= points[i][0] <= y:
-                x=max(x,points[i][0])
-                y = min(y,points[i][1])
-                count -=1
-            else:
-                x = points[i][0]
-                y = points[i][1]
-        return count
+        return arrow
+
+
+
+
+solution = Solution()
+
+print(solution.findMinArrowShots(points=[[10,16],[2,8],[1,6],[7,12]]))
