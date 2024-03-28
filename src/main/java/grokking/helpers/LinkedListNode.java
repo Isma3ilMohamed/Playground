@@ -1,6 +1,6 @@
 package grokking.helpers;
 
-class LinkedListNode {
+public class LinkedListNode {
     public int data;
     public LinkedListNode next;
     // Constructor will be used to make a LinkedListNode type object

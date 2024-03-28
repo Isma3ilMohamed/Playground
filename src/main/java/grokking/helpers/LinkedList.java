@@ -2,7 +2,7 @@ package grokking.helpers;
 
 import java.util.*;
 // Template for the linked list
-class LinkedList<T> {
+public class LinkedList<T> {
     public LinkedListNode head;
     // constructor will be used to make a LinkedList type object
     public LinkedList() {
@@ -25,6 +25,20 @@ class LinkedList<T> {
             LinkedListNode newNode = new LinkedListNode(lst[i]);
             insertNodeAtHead(newNode);
         }
+    }
+
+    public  void printListWithForwardArrow(LinkedListNode head) {
+        LinkedListNode temp = head;
+
+        while (temp != null) {
+            System.out.print(temp.data); // print node value
+            temp = temp.next;
+            if (temp != null) {
+                System.out.print(" → ");
+            }
+        }
+        // if this is the last node, print null at the end
+        System.out.print(" → null ");
     }
 
 
