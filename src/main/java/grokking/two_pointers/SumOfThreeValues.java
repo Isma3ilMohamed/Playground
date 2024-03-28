@@ -1,4 +1,4 @@
-package grokking;
+package grokking.two_pointers;
 
 import java.util.Arrays;
 
