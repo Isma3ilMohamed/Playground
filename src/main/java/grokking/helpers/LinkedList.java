@@ -1,13 +1,16 @@
 package grokking.helpers;
 
 import java.util.*;
+
 // Template for the linked list
 public class LinkedList<T> {
     public LinkedListNode head;
+
     // constructor will be used to make a LinkedList type object
     public LinkedList() {
         this.head = null;
     }
+
     // insertNodeAtHead method will insert a LinkedListNode at head
     // of a linked list.
     public void insertNodeAtHead(LinkedListNode node) {
@@ -18,6 +21,7 @@ public class LinkedList<T> {
             this.head = node;
         }
     }
+
     // createLinkedList method will create the linked list using the
     // given integer array with the help of InsertAthead method.
     public void createLinkedList(int[] lst) {
@@ -27,7 +31,7 @@ public class LinkedList<T> {
         }
     }
 
-    public  void printListWithForwardArrow(LinkedListNode head) {
+    public void printListWithForwardArrow(LinkedListNode head) {
         LinkedListNode temp = head;
 
         while (temp != null) {
@@ -42,12 +46,12 @@ public class LinkedList<T> {
     }
 
     // returns the node at the specified position(index) of the linked list
-    public static LinkedListNode getNode(LinkedListNode head, int pos){
+    public static LinkedListNode getNode(LinkedListNode head, int pos) {
         LinkedListNode ptr = head;
-        if (pos != -1){
+        if (pos != -1) {
             int p = 0;
 
-            while (p < pos){
+            while (p < pos) {
                 ptr = ptr.next;
                 p += 1;
             }
@@ -58,8 +62,7 @@ public class LinkedList<T> {
     }
 
     // returns the number of nodes in the linked list
-    public static int getLength(LinkedListNode head)
-    {
+    public static int getLength(LinkedListNode head) {
         LinkedListNode temp = head;
         int count = 0;
         while (temp != null) {
@@ -69,4 +72,32 @@ public class LinkedList<T> {
         return count;
     }
 
+    public static LinkedListNode reverseLinkedList(LinkedListNode slowPtr){
+        LinkedListNode prev = null;
+        LinkedListNode next = null;
+        LinkedListNode curr = slowPtr;
+
+        while (curr != null)
+        {
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        return prev;
+    }
+
+    public static boolean compareTwoHalves(LinkedListNode firstHalf, LinkedListNode secondHalf) {
+        while (firstHalf != null && secondHalf != null) {
+            if (firstHalf.data != secondHalf.data) {
+                return false;
+            } else {
+                firstHalf = firstHalf.next;
+                secondHalf = secondHalf.next;
+            }
+
+
+        }
+        return true;
+    }
 }
