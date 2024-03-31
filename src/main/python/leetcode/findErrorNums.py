@@ -1,4 +1,4 @@
- def findErrorNums(self, nums):
+def findErrorNums(self, nums):
     dup, missing = -1, -1
 
     for i in range(1, len(nums) + 1):

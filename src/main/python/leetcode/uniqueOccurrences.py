@@ -1,20 +1,19 @@
- def uniqueOccurrences(self, arr: List[int]) -> bool:
-        arr.sort()
-        v = []
-        i = 0
-        while i< len(arr):
-            cnt=1
+def uniqueOccurrences(self, arr: list[int]) -> bool:
+    arr.sort()
+    v = []
+    i = 0
+    while i < len(arr):
+        cnt = 1
 
-            while i+1 < len(arr) and arr[i] == arr[i+1]:
-                cnt += 1
-                i+=1
-            v.append(cnt)
+        while i + 1 < len(arr) and arr[i] == arr[i + 1]:
+            cnt += 1
             i += 1
-        v.sort()
-    
+        v.append(cnt)
+        i += 1
+    v.sort()
 
-        for i in range(1, len(v)):
-            if v[i] == v[i - 1]:
-                return False
+    for i in range(1, len(v)):
+        if v[i] == v[i - 1]:
+            return False
 
-        return True
+    return True
