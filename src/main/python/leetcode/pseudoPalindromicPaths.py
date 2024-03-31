@@ -1,6 +1,6 @@
 from typing import Optional
 
-from leetcode.helper import TreeNode
+from python.leetcode.helper import TreeNode
 
 
 class Solution:
