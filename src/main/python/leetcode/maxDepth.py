@@ -9,7 +9,7 @@ class Solution:
             elif s[i] == ")":
                 counter -= 1
 
-            max_counter=max(max_counter,counter)
+            max_counter = max(max_counter, counter)
 
         return max_counter
 
