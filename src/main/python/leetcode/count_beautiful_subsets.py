@@ -1,17 +1,32 @@
-def count_beautiful_subsets(nums, k):
-    def backtrack(start, path):
-        # Sum the current subset
-        subset_sum = sum(path)
-        # If the sum is divisible by k, it's a beautiful subset
-        if subset_sum % k == 0 and len(path) > 0:
-            beautiful_subsets.append(list(path))
-        
-        # Try including each number in the subset
-        for i in range(start, len(nums)):
-            path.append(nums[i])
-            backtrack(i + 1, path)
-            path.pop()
-    
-    beautiful_subsets = []
-    backtrack(0, [])
-    return len(beautiful_subsets)
+class Solution:
+    def beautifulSubsets(self, nums: List[int], k: int) -> int:
+        total_count = 1
+        freq_map = defaultdict(dict)
+
+        # Calculate frequencies based on remainder
+        for num in nums:
+            freq_map[num % k][num] = freq_map[num % k].get(num, 0) + 1
+
+        # Iterate through each remainder group
+        for fr in freq_map.values():
+            prev_num, curr, prev1, prev2 = -k, 1, 1, 0
+
+            # Iterate through each number in the current remainder group
+            for num, freq in sorted(fr.items()):
+                # Count of subsets skipping the current number
+                skip = prev1  
+
+                # Count of subsets including the current number
+                # Check if the current number and the previous number 
+                # form a beautiful pair
+                if num - prev_num == k:
+                    take = ((1 << freq) - 1) * prev2
+                else:
+                    take = ((1 << freq) - 1) * prev1
+
+                # Store the total count for the current number
+                curr = skip + take  
+                prev2, prev1 = prev1, curr
+                prev_num = num
+            total_count *= curr
+        return total_count - 1
