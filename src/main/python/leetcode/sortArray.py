@@ -1,20 +1,28 @@
 class Solution:
     def sortArray(self, nums: List[int]) -> List[int]:
-        def quicksort(arr, low, high):
-            if low < high:
-                pi = partition(arr, low, high)
-                quicksort(arr, low, pi - 1)
-                quicksort(arr, pi + 1, high)
+        if len(nums) <= 1:
+            return nums
         
-        def partition(arr, low, high):
-            pivot = arr[high]
-            i = low - 1
-            for j in range(low, high):
-                if arr[j] < pivot:
+        def merge(left, right):
+            sorted_array = []
+            i = j = 0
+            while i < len(left) and j < len(right):
+                if left[i] <= right[j]:
+                    sorted_array.append(left[i])
                     i += 1
-                    arr[i], arr[j] = arr[j], arr[i]
-            arr[i + 1], arr[high] = arr[high], arr[i + 1]
-            return i + 1
+                else:
+                    sorted_array.append(right[j])
+                    j += 1
+            sorted_array.extend(left[i:])
+            sorted_array.extend(right[j:])
+            return sorted_array
         
-        quicksort(nums, 0, len(nums) - 1)
-        return nums
+        def merge_sort(arr):
+            if len(arr) <= 1:
+                return arr
+            mid = len(arr) // 2
+            left = merge_sort(arr[:mid])
+            right = merge_sort(arr[mid:])
+            return merge(left, right)
+        
+        return merge_sort(nums)
