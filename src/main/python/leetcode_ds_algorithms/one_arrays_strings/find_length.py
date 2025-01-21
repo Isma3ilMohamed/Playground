@@ -9,4 +9,18 @@ def find_length(nums: list[int], k: int) -> int:
     return ans
 
 
-print(find_length(nums=[3, 1, 2, 7, 4, 2, 1, 1, 5], k=8))
+def find_length(s: str) -> str:
+    left = curr = ans = 0
+    for right in range(len(s)):
+        if s[right] == "0":
+            curr += 1
+        while curr > 1:
+            if s[left] == "0":
+                curr -= 1
+            left += 1
+        ans = max(ans, (right - left) + 1)
+
+    return ans
+
+
+print(find_length(s="1101100111"))
