@@ -2,7 +2,6 @@ class Solution:
     def maxSubArrayLen(self, nums: List[int], k: int) -> int:
         prefix_sum = longest_subarray = 0
         indices = {}
-        
         for i, num in enumerate(nums):
             prefix_sum += num
             
